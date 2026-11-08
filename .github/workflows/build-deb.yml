@@ -23,10 +23,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # Debian 11 has been moved to the archive, apt must use it (see below)
           - distro: debian
             release: 11
             suite: bullseye
             image: 'debian:bullseye'
+            archive: true
           - distro: debian
             release: 12
             suite: bookworm
@@ -65,6 +67,14 @@ jobs:
       # git is needed by actions/checkout and is not part of the base images
       - name: Install build dependencies
         run: |
+          # Released Debian versions are eventually moved to archive.debian.org:
+          # the mirrors keep serving the indexes but the pool files disappear, so
+          # apt has to be pointed at the archive instead.
+          if [ "${{ matrix.archive }}" = "true" ]; then
+            printf 'deb [trusted=yes] http://archive.debian.org/debian bullseye main\ndeb [trusted=yes] http://archive.debian.org/debian-security bullseye-security main\n' >/etc/apt/sources.list
+            echo 'Acquire::Check-Valid-Until "false";' >/etc/apt/apt.conf.d/99archive
+            echo "using archive.debian.org"
+          fi
           apt-get update
           apt-get install -y --no-install-recommends \
             build-essential cmake pkg-config dpkg-dev fakeroot file git curl ca-certificates xz-utils \

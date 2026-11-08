@@ -1,0 +1,2 @@
+# SoftEther sources are CRLF; never normalise anything (the patch must match byte for byte)
+* -text

@@ -1,0 +1,62 @@
+name: build-deb
+
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  pull_request:
+  workflow_dispatch:
+
+env:
+  # Upstream tag to build. Bump together with the patch if Server.c changes.
+  SOFTETHER_VERSION: '5.2.5189'
+
+jobs:
+  build:
+    name: ${{ matrix.distro }}-${{ matrix.release }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - distro: debian
+            release: trixie
+            image: 'debian:trixie'
+          - distro: ubuntu
+            release: '26.04'
+            image: 'ubuntu:26.04'
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+      # git is needed by actions/checkout and is not part of the base images
+      - name: Install build dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            build-essential cmake dpkg-dev fakeroot file git curl ca-certificates xz-utils \
+            libssl-dev zlib1g-dev libsodium-dev libreadline-dev libncurses-dev
+          rm -rf /var/lib/apt/lists/*
+
+      - uses: actions/checkout@v4
+
+      - name: Show the toolchain
+        run: |
+          . /etc/os-release && echo "$PRETTY_NAME"
+          uname -m
+          cmake --version | head -1
+          cc --version | head -1
+          dpkg --version | head -1
+
+      - name: Build the .deb packages
+        env:
+          DISTRO: ${{ matrix.distro }}
+          DISTRO_RELEASE: ${{ matrix.release }}
+        run: ./scripts/build-deb.sh
+
+      - name: Upload the .deb packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: softether-deb-${{ matrix.distro }}-${{ matrix.release }}
+          path: out/${{ matrix.distro }}-${{ matrix.release }}/*
+          if-no-files-found: error

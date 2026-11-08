@@ -1,0 +1,20 @@
+Architectures: amd64
+Codename: resolute
+Components: main
+Date: Sun, 08 Nov 2026 15:28:44 +0000
+Description: SoftEther VPN resolute packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: resolute
+MD5Sum:
+ 544c9cf15ed2741df272a86087afb421             6917 main/binary-amd64/Packages
+ 34cb4caa7c659e1d91f850a3515b4ea0             1692 main/binary-amd64/Packages.gz
+SHA1:
+ 3ab0fa909243a6aad8101fd5ba205a930c8b8512             6917 main/binary-amd64/Packages
+ c3cc79934073469cbda75425792d1460de5a232d             1692 main/binary-amd64/Packages.gz
+SHA256:
+ d2c91abc928495833bcf6fcc9c822a5e443cf8696aebebf6e34ba11a838fcace             6917 main/binary-amd64/Packages
+ 63103ff99f8457a11c2d946de4f00d50bb20ecef5b0b7974a083ca234a7bc2d0             1692 main/binary-amd64/Packages.gz
+SHA512:
+ db2a0573b829a9fc30bea71cef05329d5139c5a22e34d1004ac05efba046c36553cce232996704dc226a25df38ab65faeb52bc8aafb4d4116373e8efc59815c2             6917 main/binary-amd64/Packages
+ 5004fe8bbccfee2977e02d1a7189520a5e7aedc8447691cd0b5ce0b6f7f93150fb6dbc16e792e178737060b17e10e0aa60d0853271201961a84a281e29faf94f             1692 main/binary-amd64/Packages.gz

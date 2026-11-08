@@ -1,0 +1,20 @@
+Architectures: amd64
+Codename: trixie
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN trixie packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: trixie
+MD5Sum:
+ 7081a4d893233c10fb7371dc0a98e4cb             6907 main/binary-amd64/Packages
+ 9aed3f33aacd9c2531b2e0ada9243e56             1698 main/binary-amd64/Packages.gz
+SHA1:
+ 40c842e53fc3ed06fcf52851247985c605d63aa8             6907 main/binary-amd64/Packages
+ a56bb2af223157fa6758fa8e7d627b3a2e14cbd4             1698 main/binary-amd64/Packages.gz
+SHA256:
+ 60352bf0ea3b5b737c027470de5cdad1d470fe9e81e56bbdbea0099018fd61ff             6907 main/binary-amd64/Packages
+ 5f5fddf4d249718e486bbb6db8135b2615cdd7942cc5cfc874991e5ded288cd2             1698 main/binary-amd64/Packages.gz
+SHA512:
+ 13cab47e99a7e43b41bdc449d6d71df2f03fdf20f9faf7016bc4e9406bf047edc5cc1a5e37c2b7b1300b64b07f66e7118f52e469eaf174735b47d42228b2f436             6907 main/binary-amd64/Packages
+ 7db695a85125e1d6370f0d83cee79e2b6bb5520f12bca2c355aa84e138f7c7033567b3401e4a1e0f9233703e80ce62a2075054b5a17cf101d183d9fa11f5ff7c             1698 main/binary-amd64/Packages.gz

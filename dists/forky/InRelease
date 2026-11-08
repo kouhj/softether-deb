@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: forky
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN forky packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: forky
+MD5Sum:
+ 5066f7ba2f5781173736a0f39fe0c3cb             6902 main/binary-amd64/Packages
+ a7d92247f5d2849ed196914411bacebd             1694 main/binary-amd64/Packages.gz
+SHA1:
+ a79918b973b01844cf2041e1b7eb649c751625b8             6902 main/binary-amd64/Packages
+ 29a4af898ab8c5a2d5c0dcb5fb6cebec21688827             1694 main/binary-amd64/Packages.gz
+SHA256:
+ 88c019a90b134fddbfae41ae42a5c8ec3baccf5824055f44d2d5428b9f8cde1a             6902 main/binary-amd64/Packages
+ 4740365d93f31f99e019dd58b8bd04cf8091bcc7ad0acb5f90faccb07e584622             1694 main/binary-amd64/Packages.gz
+SHA512:
+ 7f2d885868c9a6ca110713bc6ea754ebbe5864016caa5b7f7c629980ab4bce69b354c161a900b3f69a9462985eeab7527403028b5e61f2f59ada31bbd0f0a1fb             6902 main/binary-amd64/Packages
+ 1f1372fedf9356c7bee35d0b66a12c45547d0674214168e7ef84c2ce33a149566bd0a239743721117bea7dd98efd27f11edc31f2d6fed686aa8b80362bb4cbab             1694 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQT3Cbs4Jga63tFFp+yHGbElry6EXQUCavCVKwAKCRCHGbElry6E
+XV8gAP4lI1J5YPzo61UBsVo2sQQk82Y+yFlhCexuXg7I0CCSwAD/dQUW/8eLo5ii
+a7IrnAKUlaZ+RYF9pBWLRb2+mwtLNws=
+=KKCC
+-----END PGP SIGNATURE-----

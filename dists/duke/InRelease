@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: duke
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN duke packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: duke
+MD5Sum:
+ 7e2bf45f559f3ebce0eb4bfb2e7d990b             6897 main/binary-amd64/Packages
+ 64683d56fdeedbe5ba0b67b570cc3cac             1690 main/binary-amd64/Packages.gz
+SHA1:
+ bf882237f1ec46f8f6f632670cfda52564ada9f7             6897 main/binary-amd64/Packages
+ da20cc2542534aec441e1aef145a294b8b11c1ed             1690 main/binary-amd64/Packages.gz
+SHA256:
+ 921c596776cb8255bc9ef1a8571ab61f7e12d0e9a09779469b35a393c806a4b4             6897 main/binary-amd64/Packages
+ 4458ef877875af5f7f1e9616c581ec63d24da9865f72293385d43305c4806907             1690 main/binary-amd64/Packages.gz
+SHA512:
+ 828389e64e57f5f1b7dd06621423734b22ba7b34e1f2dc4668e94383ea5b35f82f86c99ffbc2d577f5303be50167258148f7a38a003143c321dde627cd582f60             6897 main/binary-amd64/Packages
+ b58e9387e94e1f93b53cdb938d00980163b78094032f53fb11e81a660373fb3575a3bbf60d94a4d461e903caa495b5d7d0d4af7b1899c68b9a5a9b0d96c4d5f5             1690 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQT3Cbs4Jga63tFFp+yHGbElry6EXQUCavCVKwAKCRCHGbElry6E
+XZN0AQDmliiJcVc4AdPDjykFehqlJBUZO0zVdLsZ+AOm/2StagD+PCHvW4rJGmp3
+kz1iu77M6iYgopW522SfWo5d8xxjzgk=
+=0y5V
+-----END PGP SIGNATURE-----

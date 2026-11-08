@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: jammy
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN jammy packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: jammy
+MD5Sum:
+ eb484ce5894b58df7b9be5396e3efe81             6904 main/binary-amd64/Packages
+ 911a3b693ee9cbeee9a5795a99dbf9d8             1705 main/binary-amd64/Packages.gz
+SHA1:
+ 0969a629306b179f03082f8ec63ac9d637cfb0c0             6904 main/binary-amd64/Packages
+ 042a34e1bba15c26385d0921acf19f2fab453622             1705 main/binary-amd64/Packages.gz
+SHA256:
+ 15219c9c4c9c247536eeb4e5b43e548ed34c50e33bbf046ea7e34262c0ff45f7             6904 main/binary-amd64/Packages
+ 1b6fa10d06fd6a930f59fdb1907d8fd16624aaddfd324f6e5fec57e76783734c             1705 main/binary-amd64/Packages.gz
+SHA512:
+ 2906e7e3b1b45431e2adc447b9a3eebc9f4ca1caf4230a7bfa269a28c8068fd211545992600956eb6d2efb25d75055cfa3d704a26821d339a0917e22cf2f1178             6904 main/binary-amd64/Packages
+ 14d6986b7e775dc9a0ab9320891fb16eb2c2470f8360ffd95408d9f9c588cd416322ac735f47dbf30a06e8617d2270b6c579c4d7e1dbc33566868ef03484aec7             1705 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQT3Cbs4Jga63tFFp+yHGbElry6EXQUCavCVKwAKCRCHGbElry6E
+XWAwAPwNdIt+peo27f25DzNqnT2zmk0GsviiPAsDpeLR1UE47gD9HOE3es1qX1GL
+NGVPKYgg9dD9nXiScbxf0wwiOQlM9AE=
+=UuCB
+-----END PGP SIGNATURE-----

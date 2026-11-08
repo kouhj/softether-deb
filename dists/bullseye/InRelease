@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64
+Codename: bullseye
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN bullseye packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: bullseye
+MD5Sum:
+ 26a855f3cf939a2f55a1f377041c2771             6917 main/binary-amd64/Packages
+ 6cae7b729bafdcc1210f4184abccfe77             1687 main/binary-amd64/Packages.gz
+SHA1:
+ 16d71fd7c7e824a30d886831b02f5075fdcb7dde             6917 main/binary-amd64/Packages
+ 0950cc478503bb583fa4ff096c345e61ba71e11e             1687 main/binary-amd64/Packages.gz
+SHA256:
+ a30ed2d17b78f3fbdc2ed5d7574afe427d7dc521116e94942888596989824840             6917 main/binary-amd64/Packages
+ 1dd1b32259f1f115194133b0f3ed3ba6e73909a3a2e0cc27f05125467316c0b0             1687 main/binary-amd64/Packages.gz
+SHA512:
+ 2e7a2a07c9314cb99f6bd09d6831f6642fc2eb17edede38e82fa1e915c4ed71df8916fc59d9ff69989929b18b2e0bf3bcf0a2adbafcd952f538725e47a03520e             6917 main/binary-amd64/Packages
+ 8594ca6a05449e856e34719a69673fb65408055cc2838bb4c51dee9afe82d0c3c0850b355a2d0b6286724128387897166505a4fb25eb31df0315e49c686ba96a             1687 main/binary-amd64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQT3Cbs4Jga63tFFp+yHGbElry6EXQUCavCVKwAKCRCHGbElry6E
+XcR/AP9S8ipa5aT2jqAxlsTLbrvXM+cuHctfmjeaKxcamQphoQEAw5YkvL/D9/3J
+KOuJ7FntNmyWRbErVEdI9fs8fEOXKAc=
+=/7mL
+-----END PGP SIGNATURE-----

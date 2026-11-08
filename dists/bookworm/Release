@@ -1,0 +1,20 @@
+Architectures: amd64
+Codename: bookworm
+Components: main
+Date: Sun, 08 Nov 2026 15:28:43 +0000
+Description: SoftEther VPN bookworm packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: bookworm
+MD5Sum:
+ ba0f821cfbd2949f17c783b605e5e3a2             6911 main/binary-amd64/Packages
+ f2fdeab5d561e495698762699cbdb591             1693 main/binary-amd64/Packages.gz
+SHA1:
+ d5c13201b2a4bdadbbb1f29ef84ac08232911352             6911 main/binary-amd64/Packages
+ 8762e69a811cc28b604dbe1a9549152c3e00eed8             1693 main/binary-amd64/Packages.gz
+SHA256:
+ ce5c1f4df5a8ca606d8518f1dfd49f8d107dd981f3cdd9eacf5e9f6cdc708e0f             6911 main/binary-amd64/Packages
+ 8a4df97f22ff6dfdbcfa63aa1c73cd773180c7adbdb7c90e83dd6990cfdb530b             1693 main/binary-amd64/Packages.gz
+SHA512:
+ a750eff04d6df05e26d2e3c8a3c5d62c2ca8fcd00064773a1408f5e7a1a75fb9260a0b26ea51bb14d6dca88399405dc331f99dc3660ccc11b4555f74e40418e3             6911 main/binary-amd64/Packages
+ 959587d127b30ed5eb9e88bf6ade2c74b1943b5c4ce811d150d174daa64d64e54cd6fe272d64c4b559f97889c492cb7f984447affb6aaa10267e391e230969c5             1693 main/binary-amd64/Packages.gz

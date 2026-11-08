@@ -1,0 +1,20 @@
+Architectures: amd64
+Codename: noble
+Components: main
+Date: Sun, 08 Nov 2026 15:28:44 +0000
+Description: SoftEther VPN noble packages built from the official release
+Label: SoftEther VPN (patched)
+Origin: SoftEther deb repository
+Suite: noble
+MD5Sum:
+ 08131fb01c2d4ba56bac7febe3bce105             6902 main/binary-amd64/Packages
+ 0f635c97819d2e65ea92e42c3f0de5ac             1688 main/binary-amd64/Packages.gz
+SHA1:
+ d0354ed40d044bc390de37b5b127d423186c9649             6902 main/binary-amd64/Packages
+ e1e8c0a82e078642d5f8b3c13a506f3142f192aa             1688 main/binary-amd64/Packages.gz
+SHA256:
+ 6121cef4284f2340f41a86a504f45dc6a7eed10577bed312d726a9b42835ce94             6902 main/binary-amd64/Packages
+ 83c7c484ca014eb9166f99bd50f846392c2a5cc91e2cf8fdc5633cc20f2ec64d             1688 main/binary-amd64/Packages.gz
+SHA512:
+ ba667ff7c90481fc02bff4a02827363ebabd30fdcb56027ff3ecd1132283dd687631792aa30d01d45f4db04b98550c80cbd3f5f424d35aec6c137eaec589dce9             6902 main/binary-amd64/Packages
+ 99e1ef93e7ee45d5b4c308724fd895dacb8f100d200179a0698c9bcff0b4fe3f39f0ca2424b87cc8f9ce070c75b9a93ce8b65cad7f9dfb97991286c47154fad1             1688 main/binary-amd64/Packages.gz

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SoftEther VPN deb repository</title>
+<style>
+  body { font-family: sans-serif; max-width: 46rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
+  pre { background: #f4f4f4; padding: .8rem; overflow-x: auto; }
+  code { font-family: monospace; }
+</style>
+</head>
+<body>
+<h1>SoftEther VPN deb repository</h1>
+<p>SoftEther VPN packages built from the official upstream release for
+Debian 13 (trixie) and Ubuntu 26.04 (resolute), with one local patch: the
+enterprise feature restrictions of the open source build are disabled.</p>
+
+<h2>Add the repository (DEB822)</h2>
+<p><code>/etc/apt/sources.list.d/softether.sources</code>:</p>
+<pre>Types: deb
+URIs: https://kouhj.github.io/softether-deb/
+Suites: bullseye bookworm trixie forky duke jammy noble resolute 
+Components: main
+Architectures: amd64
+Signed-By: /etc/apt/keyrings/softether-deb.asc</pre>
+<p>The signing key:</p>
+<pre>sudo install -d /etc/apt/keyrings
+curl -fsSL https://kouhj.github.io/softether-deb/softether-deb.asc \
+  | sudo tee /etc/apt/keyrings/softether-deb.asc &gt;/dev/null</pre>
+<p>Then <code>sudo apt update &amp;&amp; sudo apt install softether-vpnserver</code>.</p>
+<p><a href="https://github.com/kouhj/softether-deb">Source, build logs and releases</a></p>
+</body>
+</html>

@@ -1,0 +1,105 @@
+Package: softether-common
+Architecture: amd64
+Version: 5.2.5189
+Priority: optional
+Section: net
+Maintainer: Unknown
+Installed-Size: 3945
+Depends: libc6 (>= 2.34), libreadline8t64 (>= 6.0), libsodium23 (>= 1.0.14), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.1.4)
+Filename: pool/resolute/main/s/softether/softether-common_5.2.5189_amd64.deb
+Size: 1479326
+MD5sum: 34546d55d454fb27005fc28dff4598e8
+SHA1: fd01a753c34375b3e28d14282d601cf55a8de5da
+SHA256: 6a032e0841be723fb76252fd302861388b1cf16568dc432c50b822d512ed043e
+SHA512: b8eb6a051050da00602b2cf276f2a50362af2f769cdbb24c19e48a94887e3d0ef0cfd6327a1a8a4fbde8f0c9d0680d7067ec763baef1cd3d47699bf2245c2c4d
+Description: SoftEther VPN is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ SoftEther VPN ("SoftEther" means "Software Ethernet") is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ Its protocol is very fast and it can be used in very restricted environments, as it's able to transfer packets over DNS and ICMP.
+ The server includes a free Dynamic DNS service, which can be used to access the server even if the public IP address changes.
+ A NAT-Traversal function is also available, very useful in case the required ports cannot be opened on the firewall.
+ The supported third party protocols are OpenVPN, L2TP/IPSec, SSTP and WireGuard.
+
+Package: softether-vpnbridge
+Architecture: amd64
+Version: 5.2.5189
+Priority: optional
+Section: net
+Maintainer: Unknown
+Installed-Size: 2967
+Depends: libc6 (>= 2.34), softether-common (= 5.2.5189)
+Filename: pool/resolute/main/s/softether/softether-vpnbridge_5.2.5189_amd64.deb
+Size: 2989184
+MD5sum: 9d7d1fb7e95b0e581f36fcc3454395e6
+SHA1: 12327c33b5d2e15bae0ebd4e5ef48bf58b88b7f1
+SHA256: 3d3d7515418c73dc7509c277d07175a71b2696bd6d156e01d687f1f0c4744b87
+SHA512: b2c6e30e4327d868e880696b1f4e317bf578e4425b7b33a1f5ab47ce4afe21b019879d00b3114282071fbf52dd903e621891a608b7ce1bbbe1969d2b7a3393d5
+Description: SoftEther VPN is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ SoftEther VPN ("SoftEther" means "Software Ethernet") is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ Its protocol is very fast and it can be used in very restricted environments, as it's able to transfer packets over DNS and ICMP.
+ The server includes a free Dynamic DNS service, which can be used to access the server even if the public IP address changes.
+ A NAT-Traversal function is also available, very useful in case the required ports cannot be opened on the firewall.
+ The supported third party protocols are OpenVPN, L2TP/IPSec, SSTP and WireGuard.
+
+Package: softether-vpnclient
+Architecture: amd64
+Version: 5.2.5189
+Priority: optional
+Section: net
+Maintainer: Unknown
+Installed-Size: 2967
+Depends: libc6 (>= 2.34), softether-common (= 5.2.5189)
+Filename: pool/resolute/main/s/softether/softether-vpnclient_5.2.5189_amd64.deb
+Size: 2989106
+MD5sum: 99429c695cdfd75340b99aba180dce57
+SHA1: fae66afb03287501266ea9258c178eeb0ac85f2c
+SHA256: 2ddb71b620dc8cf1e245b05a10991dcabf9446567180173b9068248a2d309af8
+SHA512: a901b242699f86646ae607718c36e8f6b7f01456ac6c5485aa7a9cc90a2ccca48b177628f57609f8e5ab7096da19b77878fdcd2a61031c7ad3d29e674b5e6c23
+Description: SoftEther VPN is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ SoftEther VPN ("SoftEther" means "Software Ethernet") is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ Its protocol is very fast and it can be used in very restricted environments, as it's able to transfer packets over DNS and ICMP.
+ The server includes a free Dynamic DNS service, which can be used to access the server even if the public IP address changes.
+ A NAT-Traversal function is also available, very useful in case the required ports cannot be opened on the firewall.
+ The supported third party protocols are OpenVPN, L2TP/IPSec, SSTP and WireGuard.
+
+Package: softether-vpncmd
+Architecture: amd64
+Version: 5.2.5189
+Priority: optional
+Section: net
+Maintainer: Unknown
+Installed-Size: 2955
+Depends: libc6 (>= 2.34), softether-common (= 5.2.5189)
+Filename: pool/resolute/main/s/softether/softether-vpncmd_5.2.5189_amd64.deb
+Size: 2988984
+MD5sum: e48b7ff6fa7c81487a10efce545854a2
+SHA1: dbaca36d2cba4fe7822243133130999f087370a6
+SHA256: 53aff631c83baebb2f09f94853d2479122a97fa2271c5aec3e55a24a36bb4a37
+SHA512: bd5cbe21cd0c02d5c26bc143a771e56459fe67720a2b0ee355e9efae2f4cc94fa646236e02ded2364ee3b2d2e03bc1179dfff295510bfdf3662a392ef588003e
+Description: SoftEther VPN is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ SoftEther VPN ("SoftEther" means "Software Ethernet") is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ Its protocol is very fast and it can be used in very restricted environments, as it's able to transfer packets over DNS and ICMP.
+ The server includes a free Dynamic DNS service, which can be used to access the server even if the public IP address changes.
+ A NAT-Traversal function is also available, very useful in case the required ports cannot be opened on the firewall.
+ The supported third party protocols are OpenVPN, L2TP/IPSec, SSTP and WireGuard.
+
+Package: softether-vpnserver
+Architecture: amd64
+Version: 5.2.5189
+Priority: optional
+Section: net
+Maintainer: Unknown
+Installed-Size: 2967
+Depends: libc6 (>= 2.34), softether-common (= 5.2.5189)
+Filename: pool/resolute/main/s/softether/softether-vpnserver_5.2.5189_amd64.deb
+Size: 2989188
+MD5sum: 8fe9cffa66dd83e1267b3bc770cad520
+SHA1: fb2ac2551c37e05cae37baa81d8e291d44f1a122
+SHA256: 23cc958384c60d5a05adb190eb39c3de8a663a5cb55012d8b39e8fced9640d0e
+SHA512: 4e6ceda44d9cf239f9e3fe7c4da1ac4fd9eec2a992351f04870c37f93c85c1a25a3482d378732053ffc4de20f35758c05ca68ce9e11150a1746e142424f34764
+Description: SoftEther VPN is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ SoftEther VPN ("SoftEther" means "Software Ethernet") is an open-source cross-platform multi-protocol VPN program, created as an academic project in the University of Tsukuba.
+ Its protocol is very fast and it can be used in very restricted environments, as it's able to transfer packets over DNS and ICMP.
+ The server includes a free Dynamic DNS service, which can be used to access the server even if the public IP address changes.
+ A NAT-Traversal function is also available, very useful in case the required ports cannot be opened on the firewall.
+ The supported third party protocols are OpenVPN, L2TP/IPSec, SSTP and WireGuard.
+

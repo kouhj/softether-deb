@@ -89,6 +89,24 @@ sed -i 's@^\(\s*\)is_restricted = SiIsEnterpriseFunctionsRestrictedOnOpenSource(
 diff -u --label a/src/Cedar/Server.c --label b/src/Cedar/Server.c /tmp/Server.c.orig src/Cedar/Server.c > 0001.patch
 ```
 
+## Releases
+
+Pushing a tag runs the same build and then publishes a GitHub release with every
+package attached:
+
+```sh
+git tag 5.2.5189
+git push origin 5.2.5189
+```
+
+- the asset names carry the distribution they were built on, because the `.deb`
+  file names are otherwise identical:
+  `softether-vpnserver_5.2.5189_amd64.debian-trixie.deb` and
+  `softether-vpnserver_5.2.5189_amd64.ubuntu-26.04.deb`;
+- one `SHA256SUMS` covers all of them;
+- pushing the tag again (or re-running the workflow for it) uploads the packages
+  with `--clobber`, so the release is updated instead of duplicated.
+
 ## Notes
 
 - SoftEther's sources use CRLF line endings; `.gitattributes` disables any line

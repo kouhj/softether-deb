@@ -11,6 +11,10 @@ env:
   # Upstream tag to build. Bump together with the patch if Server.c changes.
   SOFTETHER_VERSION: '5.2.5189'
 
+# the build jobs only read the repo; the release job asks for write access
+permissions:
+  contents: read
+
 jobs:
   build:
     name: ${{ matrix.distro }}-${{ matrix.release }}
@@ -60,3 +64,64 @@ jobs:
           name: softether-deb-${{ matrix.distro }}-${{ matrix.release }}
           path: out/${{ matrix.distro }}-${{ matrix.release }}/*
           if-no-files-found: error
+
+  # Tag pushes also publish a GitHub release with the packages attached. The
+  # .deb names are identical for both distributions, so they get a suffix here.
+  release:
+    name: release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download the packages
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: softether-deb-*
+
+      - name: Rename the packages per distribution
+        run: |
+          set -eu
+          mkdir -p assets
+          for dir in dist/softether-deb-*; do
+            distro=${dir#dist/softether-deb-}
+            for deb in "$dir"/*.deb; do
+              base=$(basename "$deb" .deb)
+              cp "$deb" "assets/${base}.${distro}.deb"
+            done
+          done
+          cd assets
+          sha256sum ./*.deb >SHA256SUMS
+          ls -l
+
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -eu
+          cat >notes.md <<EOF
+          SoftEther VPN ${SOFTETHER_VERSION}, built from the official upstream
+          release for Debian 13 (trixie) and Ubuntu 26.04, with one local patch:
+          the two assignments of \`is_restricted\` in \`src/Cedar/Server.c\` are
+          commented out, so the enterprise feature flags (push route, RADIUS,
+          certificate auth, deep logging, access control, syslog) stay enabled.
+
+          Install the common package together with the component you want:
+
+          \`\`\`sh
+          sudo apt install ./softether-common_*.deb ./softether-vpnserver_*.deb
+          \`\`\`
+
+          Assets are suffixed with the distribution they were built on.
+          EOF
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" assets/*.deb assets/SHA256SUMS --clobber
+          else
+            gh release create "$TAG" assets/*.deb assets/SHA256SUMS \
+              --title "SoftEther VPN ${SOFTETHER_VERSION} (patched .deb)" \
+              --notes-file notes.md
+          fi
+          gh release view "$TAG" --json url -q .url

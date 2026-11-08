@@ -162,6 +162,10 @@ jobs:
           # no checkout in this job, so tell gh which repository it is
           REPO="$GITHUB_REPOSITORY"
           if gh release view "$TAG" -R "$REPO" >/dev/null 2>&1; then
+            # drop assets of a distribution that is no longer built (old names)
+            for old in $(gh release view "$TAG" -R "$REPO" --json assets -q '.assets[].name'); do
+              [ -f "assets/$old" ] || gh release delete-asset "$TAG" "$old" -R "$REPO" --yes
+            done
             gh release upload "$TAG" -R "$REPO" assets/*.deb assets/SHA256SUMS --clobber
           else
             gh release create "$TAG" -R "$REPO" assets/*.deb assets/SHA256SUMS \

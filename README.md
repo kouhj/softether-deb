@@ -107,6 +107,29 @@ git push origin 5.2.5189
 - pushing the tag again (or re-running the workflow for it) uploads the packages
   with `--clobber`, so the release is updated instead of duplicated.
 
+## apt repository (GitHub Pages)
+
+Tag pushes also assemble a static apt repository and publish it to GitHub Pages:
+
+```text
+https://kouhj.github.io/softether-deb/
+```
+
+- `dists/trixie/` (Debian 13) and `dists/resolute/` (Ubuntu 26.04), each with a
+  signed `InRelease`, a `Release.gpg` and the `main/binary-amd64` indexes;
+- one pool per suite (`pool/<suite>/main/s/softether/`) because the packages have
+  the same name and version in both distributions — apt only needs the path from
+  the `Filename:` field;
+- the `Packages` index adds the `softether-common` dependency that upstream's
+  CPack rules omit, so a component package pulls its libraries in;
+- `softether-deb.asc` is the signing key. The private key is stored in the
+  repository secret `GPG_PRIVATE_KEY`; when the secret is missing the index is
+  published unsigned and the job says so in the log.
+
+Installing from it — **DEB822** `.sources` files for Debian 13 and Ubuntu 26.04,
+key installation, verification and removal: see
+[docs/apt-repo.md](docs/apt-repo.md).
+
 ## Notes
 
 - SoftEther's sources use CRLF line endings; `.gitattributes` disables any line

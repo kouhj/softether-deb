@@ -34,7 +34,7 @@ jobs:
         run: |
           apt-get update
           apt-get install -y --no-install-recommends \
-            build-essential cmake dpkg-dev fakeroot file git curl ca-certificates xz-utils \
+            build-essential cmake pkg-config dpkg-dev fakeroot file git curl ca-certificates xz-utils \
             libssl-dev zlib1g-dev libsodium-dev libreadline-dev libncurses-dev
           rm -rf /var/lib/apt/lists/*
 

@@ -54,12 +54,22 @@ the `.deb` files plus `SHA256SUMS`:
 
 ```sh
 gh run download --repo <owner>/softether-deb --name softether-deb-debian-trixie
-sudo apt install ./softether-vpnserver_*.deb
+sudo apt install ./softether-common_*.deb ./softether-vpnserver_*.deb
 ```
 
 The packages carry the distribution they were built on in the artifact name
 only — the `.deb` file names stay the upstream ones, so do not mix artifacts of
 two distributions in one directory (the checksum file would collide).
+
+### Upstream packaging quirk
+
+The CPack rules in the upstream project split the packages into components but
+never declare that `softether-vpnserver` (and `-vpnclient`, `-vpnbridge`,
+`-vpncmd`) depend on `softether-common`, which is where `libcedar.so` and
+`libmayaqua.so` live. Installing a component on its own therefore leaves it
+without its libraries — always install `softether-common` in the same command
+(as above). This is upstream behaviour and is left untouched here, because the
+only local change to the source is the patch.
 
 ## Bumping the version
 

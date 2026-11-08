@@ -17,17 +17,46 @@ permissions:
 
 jobs:
   build:
-    name: ${{ matrix.distro }}-${{ matrix.release }}
+    name: ${{ matrix.distro }} ${{ matrix.release }} (${{ matrix.suite }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
           - distro: debian
-            release: trixie
+            release: 11
+            suite: bullseye
+            image: 'debian:bullseye'
+          - distro: debian
+            release: 12
+            suite: bookworm
+            image: 'debian:bookworm'
+          - distro: debian
+            release: 13
+            suite: trixie
             image: 'debian:trixie'
+          # Debian 14 is currently testing, the image is published already
+          - distro: debian
+            release: '14 (testing)'
+            suite: forky
+            image: 'debian:forky'
+          # Debian 15 has no image yet, so build it on unstable, which becomes
+          # duke once forky is released
+          - distro: debian
+            release: '15 (built on sid)'
+            suite: duke
+            image: 'debian:sid'
+          - distro: ubuntu
+            release: '22.04'
+            suite: jammy
+            image: 'ubuntu:22.04'
+          - distro: ubuntu
+            release: '24.04'
+            suite: noble
+            image: 'ubuntu:24.04'
           - distro: ubuntu
             release: '26.04'
+            suite: resolute
             image: 'ubuntu:26.04'
     container:
       image: ${{ matrix.image }}
@@ -56,13 +85,14 @@ jobs:
         env:
           DISTRO: ${{ matrix.distro }}
           DISTRO_RELEASE: ${{ matrix.release }}
+          SUITE: ${{ matrix.suite }}
         run: ./scripts/build-deb.sh
 
       - name: Upload the .deb packages
         uses: actions/upload-artifact@v4
         with:
-          name: softether-deb-${{ matrix.distro }}-${{ matrix.release }}
-          path: out/${{ matrix.distro }}-${{ matrix.release }}/*
+          name: softether-deb-${{ matrix.suite }}
+          path: out/${{ matrix.suite }}/*
           if-no-files-found: error
 
   # Tag pushes also publish a GitHub release with the packages attached. The
@@ -104,7 +134,9 @@ jobs:
           set -eu
           cat >notes.md <<EOF
           SoftEther VPN ${SOFTETHER_VERSION}, built from the official upstream
-          release for Debian 13 (trixie) and Ubuntu 26.04, with one local patch:
+          release for Debian 11/12/13/14/15 (bullseye, bookworm, trixie, forky,
+          duke) and Ubuntu 22.04/24.04/26.04 (jammy, noble, resolute), with one
+          local patch:
           the two assignments of \`is_restricted\` in \`src/Cedar/Server.c\` are
           commented out, so the enterprise feature flags (push route, RADIUS,
           certificate auth, deep logging, access control, syslog) stay enabled.
@@ -115,7 +147,7 @@ jobs:
           sudo apt install ./softether-common_*.deb ./softether-vpnserver_*.deb
           \`\`\`
 
-          Assets are suffixed with the distribution they were built on.
+          The asset name carries the suite each package was built for.
           EOF
           # no checkout in this job, so tell gh which repository it is
           REPO="$GITHUB_REPOSITORY"

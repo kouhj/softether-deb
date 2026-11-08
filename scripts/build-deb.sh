@@ -3,21 +3,23 @@
 #
 # Environment:
 #   SOFTETHER_VERSION   upstream tag to build (default 5.2.5189)
-#   DISTRO, DISTRO_RELEASE  only used to name the output directory / artifact
+#   SUITE               distribution suite, also the output directory (trixie, noble, ...)
+#   DISTRO, DISTRO_RELEASE  informational only (shown in the log)
 #   WORK                scratch directory (default /tmp/softether-build)
 set -eu
 
 SOFTETHER_VERSION=${SOFTETHER_VERSION:-5.2.5189}
+SUITE=${SUITE:?SUITE must be set (e.g. trixie, noble)}
 DISTRO=${DISTRO:-unknown}
 DISTRO_RELEASE=${DISTRO_RELEASE:-unknown}
 WORK=${WORK:-/tmp/softether-build}
 REPO_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-OUT="$REPO_DIR/out/$DISTRO-$DISTRO_RELEASE"
+OUT="$REPO_DIR/out/$SUITE"
 
 TARBALL="SoftEtherVPN-${SOFTETHER_VERSION}.tar.xz"
 URL="https://github.com/softethervpn/softethervpn/releases/download/${SOFTETHER_VERSION}/${TARBALL}"
 
-echo "::group::fetch the official source"
+echo "::group::fetch the official source (${DISTRO} ${DISTRO_RELEASE}, suite ${SUITE})"
 mkdir -p "$WORK"
 cd "$WORK"
 if [ ! -f "$TARBALL" ]; then

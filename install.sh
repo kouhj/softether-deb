@@ -26,7 +26,7 @@ BASE=${BASE:-https://kouhj.github.io/softether-deb}
 KEYRING=${KEYRING:-/etc/apt/keyrings/softether-deb.asc}
 SOURCES=${SOURCES:-/etc/apt/sources.list.d/softether.sources}
 FINGERPRINT='F709BB382606BADED145A7EC8719B125AF2E845D'
-SUPPORTED='trixie resolute'
+SUPPORTED='bullseye bookworm trixie forky duke jammy noble resolute'
 
 suite=
 install_pkgs=
@@ -121,7 +121,8 @@ else
         *" $detected "*) suite=$detected ;;
         *)
             echo "ERROR: ${PRETTY_NAME:-unknown system} is not supported." >&2
-            echo "       Published suites: $SUPPORTED (Debian 13, Ubuntu 26.04)." >&2
+            echo "       Published suites: $SUPPORTED" >&2
+            echo "       (Debian 11/12/13/14/15 and Ubuntu 22.04/24.04/26.04)" >&2
             echo "       Use --suite <name> to override at your own risk." >&2
             exit 1
             ;;

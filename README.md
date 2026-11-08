@@ -30,8 +30,9 @@ not compile, and the rest of the function reads the variable.
 
 ## How the packages are built
 
-The workflow runs `scripts/build-deb.sh` inside the target distribution's
-container:
+The workflow runs `scripts/build-deb.sh` inside the container of every
+distribution in the matrix (Debian 11–15 and Ubuntu 22.04/24.04/26.04; `duke`
+has no image yet and is built on `debian:sid`):
 
 1. download the official source release `SoftEtherVPN-<version>.tar.xz`;
 2. apply the patch with `patch -p1` and verify that no assignment of
@@ -99,10 +100,10 @@ git tag 5.2.5189
 git push origin 5.2.5189
 ```
 
-- the asset names carry the distribution they were built on, because the `.deb`
-  file names are otherwise identical:
-  `softether-vpnserver_5.2.5189_amd64.debian-trixie.deb` and
-  `softether-vpnserver_5.2.5189_amd64.ubuntu-26.04.deb`;
+- the asset names carry the suite they were built on, because the `.deb` file
+  names are otherwise identical:
+  `softether-vpnserver_5.2.5189_amd64.trixie.deb` and
+  `softether-vpnserver_5.2.5189_amd64.noble.deb`;
 - one `SHA256SUMS` covers all of them;
 - pushing the tag again (or re-running the workflow for it) uploads the packages
   with `--clobber`, so the release is updated instead of duplicated.
@@ -115,8 +116,10 @@ Tag pushes also assemble a static apt repository and publish it to GitHub Pages:
 https://kouhj.github.io/softether-deb/
 ```
 
-- `dists/trixie/` (Debian 13) and `dists/resolute/` (Ubuntu 26.04), each with a
-  signed `InRelease`, a `Release.gpg` and the `main/binary-amd64` indexes;
+- one suite per published distribution, each with a signed `InRelease`, a
+  `Release.gpg` and the `main/binary-amd64` indexes: Debian 11/12/13/14/15
+  (`bullseye`, `bookworm`, `trixie`, `forky`, `duke`) and Ubuntu 22.04/24.04/26.04
+  (`jammy`, `noble`, `resolute`);
 - one pool per suite (`pool/<suite>/main/s/softether/`) because the packages have
   the same name and version in both distributions — apt only needs the path from
   the `Filename:` field;

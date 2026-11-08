@@ -4,14 +4,30 @@ The `.deb` packages are published as a static apt repository on GitHub Pages:
 
 ```text
 https://kouhj.github.io/softether-deb/
-├── dists/trixie/…      Debian 13 (trixie)
-├── dists/resolute/…    Ubuntu 26.04 LTS (resolute)
+├── dists/<suite>/…     one directory per published suite (see below)
 └── softether-deb.asc   signing key
 ```
 
-Both suites are signed with the same key, and the indexes are in the modern
-**DEB822** format (`.sources`), which is what Debian 12+ and Ubuntu 24.04+ use
-by default. The legacy one-line format is shown further down for older systems.
+Published suites:
+
+| distribution | version | suite |
+|---|---|---|
+| Debian | 11 (oldoldstable) | `bullseye` |
+| Debian | 12 (oldstable) | `bookworm` |
+| Debian | 13 (stable) | `trixie` |
+| Debian | 14 (testing) | `forky` |
+| Debian | 15 (future, built on unstable) | `duke` |
+| Ubuntu | 22.04 LTS | `jammy` |
+| Ubuntu | 24.04 LTS | `noble` |
+| Ubuntu | 26.04 LTS | `resolute` |
+
+All suites are signed with the same key and the indexes use the **DEB822**
+format (`.sources`), which every distribution in the table understands. The
+legacy one-line format is shown further down for even older systems.
+
+`forky` and `duke` are built on moving targets (Debian testing / unstable), so
+those two are best effort: a build can fail after an upstream toolchain change
+without the other suites being affected.
 
 Key fingerprint:
 
@@ -61,40 +77,33 @@ Check that the key you downloaded is the one above:
 gpg --show-keys --with-fingerprint /etc/apt/keyrings/softether-deb.asc
 ```
 
-## 2. Add the repository — Debian 13 (trixie)
+## 2. Add the repository
 
-Write `/etc/apt/sources.list.d/softether.sources`:
+Write `/etc/apt/sources.list.d/softether.sources`, replacing `<suite>` with the
+suite of this machine from the table above (`trixie` on Debian 13, `noble` on
+Ubuntu 24.04, …):
 
 ```sh
 sudo tee /etc/apt/sources.list.d/softether.sources >/dev/null <<'EOF'
 Types: deb
 URIs: https://kouhj.github.io/softether-deb/
-Suites: trixie
+Suites: <suite>
 Components: main
 Architectures: amd64
 Signed-By: /etc/apt/keyrings/softether-deb.asc
 EOF
 ```
 
-## 3. Add the repository — Ubuntu 26.04 LTS (resolute)
-
-Write `/etc/apt/sources.list.d/softether.sources`:
+Print the codename of this machine with:
 
 ```sh
-sudo tee /etc/apt/sources.list.d/softether.sources >/dev/null <<'EOF'
-Types: deb
-URIs: https://kouhj.github.io/softether-deb/
-Suites: resolute
-Components: main
-Architectures: amd64
-Signed-By: /etc/apt/keyrings/softether-deb.asc
-EOF
+. /etc/os-release && echo "$VERSION_CODENAME"
 ```
 
-Do not put `trixie` and `resolute` into one file on a single machine: apt would
-try to install the packages of the other distribution.
+Do not list several suites in one file unless the machine really is one of them:
+apt would offer the packages of the other distributions as well.
 
-## 4. Install
+## 3. Install
 
 ```sh
 sudo apt update
@@ -150,7 +159,7 @@ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/softether-deb.asc] https://kou
   | sudo tee /etc/apt/sources.list.d/softether.list
 ```
 
-(replace `trixie` with `resolute` on Ubuntu 26.04.)
+(replace `trixie` with the suite of the machine, see the table above.)
 
 ## Without the signing key
 

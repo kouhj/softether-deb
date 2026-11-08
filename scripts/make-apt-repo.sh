@@ -16,14 +16,14 @@
 # Environment:
 #   INPUT_DIR    artefacts, one sub directory per distribution (default artifacts)
 #   SITE_DIR     output directory (default site)
-#   SUITES       "<suite>:<artifact-dir>" pairs
-#                (default "trixie:softether-deb-debian-trixie resolute:softether-deb-ubuntu-26.04")
+#   SUITES       suites to publish; the artifacts are expected in
+#                $INPUT_DIR/softether-deb-<suite> (default: the list below)
 #   GPG_KEY      key id used to sign the indexes; sign only when it is set
 set -eu
 
 INPUT_DIR=${INPUT_DIR:-artifacts}
 SITE_DIR=${SITE_DIR:-site}
-SUITES=${SUITES:-"trixie:softether-deb-debian-trixie resolute:softether-deb-ubuntu-26.04"}
+SUITES=${SUITES:-"bullseye bookworm trixie forky duke jammy noble resolute"}
 REPO_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 COMPONENTS="softether-vpnserver softether-vpnclient softether-vpnbridge softether-vpncmd"
 
@@ -61,10 +61,8 @@ cp "$REPO_DIR/keys/softether-deb.asc" "$SITE_DIR/"
 install -m 0755 "$REPO_DIR/install.sh" "$SITE_DIR/install.sh"
 [ -f "$REPO_DIR/keys/softether-deb.gpg" ] && cp "$REPO_DIR"/keys/softether-deb.gpg "$SITE_DIR/"
 
-for entry in $SUITES; do
-    suite=${entry%%:*}
-    artifact=${entry#*:}
-    src="$INPUT_DIR/$artifact"
+for suite in $SUITES; do
+    src="$INPUT_DIR/softether-deb-$suite"
     [ -d "$src" ] || { echo "ERROR: missing artifact directory $src" >&2; exit 1; }
 
     echo "--- $suite"
@@ -144,7 +142,7 @@ if [ -n "$REPO_SLUG" ]; then
 else
     host="example.github.io/softether-deb"
 fi
-suite_list=$(for entry in $SUITES; do printf '%s ' "${entry%%:*}"; done)
+suite_list="$SUITES "
 sed -i "s|__REPO_HOST__|$host|g; s|__SUITES__|$suite_list|g; s|__REPO__|${REPO_SLUG:-owner/repo}|g" \
     "$SITE_DIR/index.html"
 

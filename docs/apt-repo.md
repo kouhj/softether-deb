@@ -19,6 +19,33 @@ Key fingerprint:
 F709 BB38 2606 BADE D145  A7EC 8719 B125 AF2E 845D
 ```
 
+## Quick install (script)
+
+The same steps as below, done in one go — the script detects the distribution,
+installs the key, verifies its fingerprint and writes the DEB822 file:
+
+```sh
+curl -fsSL https://kouhj.github.io/softether-deb/install.sh | sudo sh
+```
+
+Options:
+
+| option | meaning |
+|---|---|
+| `--install softether-vpnserver` | add the repository and install a package (space separated list works: `"softether-vpnserver softether-vpncmd"`) |
+| `--suite <name>` | override the detected suite (needed only on an unsupported release) |
+| `--no-update` | do not run `apt-get update` |
+| `--dry-run` | print what would happen, change nothing (does not need root) |
+| `--remove` | remove the repository and the signing key again |
+
+The script refuses to run on anything but Debian 13 / Ubuntu 26.04 with
+`amd64`, and aborts when the downloaded key does not match the expected
+fingerprint. Uninstalling the packages is a separate step:
+
+```sh
+sudo apt purge 'softether-*'
+```
+
 ## 1. Install the signing key
 
 ```sh

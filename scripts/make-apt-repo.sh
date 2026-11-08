@@ -57,6 +57,8 @@ sign_index() {
 rm -rf "$SITE_DIR"
 mkdir -p "$SITE_DIR"
 cp "$REPO_DIR/keys/softether-deb.asc" "$SITE_DIR/"
+# the helper script is served next to the repository so it can be piped into sh
+install -m 0755 "$REPO_DIR/install.sh" "$SITE_DIR/install.sh"
 [ -f "$REPO_DIR/keys/softether-deb.gpg" ] && cp "$REPO_DIR"/keys/softether-deb.gpg "$SITE_DIR/"
 
 for entry in $SUITES; do

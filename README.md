@@ -126,9 +126,18 @@ https://kouhj.github.io/softether-deb/
   repository secret `GPG_PRIVATE_KEY`; when the secret is missing the index is
   published unsigned and the job says so in the log.
 
-Installing from it — **DEB822** `.sources` files for Debian 13 and Ubuntu 26.04,
+Add it with the helper (detects the distribution, installs and verifies the key,
+writes the DEB822 file):
+
+```sh
+curl -fsSL https://kouhj.github.io/softether-deb/install.sh | sudo sh
+sudo sh install.sh --install softether-vpnserver   # or: --remove / --dry-run
+```
+
+Installing by hand — **DEB822** `.sources` files for Debian 13 and Ubuntu 26.04,
 key installation, verification and removal: see
-[docs/apt-repo.md](docs/apt-repo.md).
+[docs/apt-repo.md](docs/apt-repo.md). The helper is published next to the
+repository as `install.sh`.
 
 ## Notes
 

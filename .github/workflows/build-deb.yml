@@ -117,11 +117,13 @@ jobs:
 
           Assets are suffixed with the distribution they were built on.
           EOF
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" assets/*.deb assets/SHA256SUMS --clobber
+          # no checkout in this job, so tell gh which repository it is
+          REPO="$GITHUB_REPOSITORY"
+          if gh release view "$TAG" -R "$REPO" >/dev/null 2>&1; then
+            gh release upload "$TAG" -R "$REPO" assets/*.deb assets/SHA256SUMS --clobber
           else
-            gh release create "$TAG" assets/*.deb assets/SHA256SUMS \
+            gh release create "$TAG" -R "$REPO" assets/*.deb assets/SHA256SUMS \
               --title "SoftEther VPN ${SOFTETHER_VERSION} (patched .deb)" \
               --notes-file notes.md
           fi
-          gh release view "$TAG" --json url -q .url
+          gh release view "$TAG" -R "$REPO" --json url -q .url
